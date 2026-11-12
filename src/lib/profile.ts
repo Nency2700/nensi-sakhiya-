@@ -203,189 +203,332 @@ export const SHARED_EXPERIENCE_DE: Experience[] = [
   },
 ];
 
-export const PROJECTS_EN: Project[] = [
+const LINKS = {
+  zappfreshCustomerAndroid: {
+    label: "Customer Android",
+    href: "https://play.google.com/store/apps/details?id=com.zappfresh.android.zappfresh",
+  },
+  zappfreshCustomerIos: {
+    label: "Customer iOS",
+    href: "https://apps.apple.com/in/app/zappfresh/id1330553696",
+  },
+  welzaa: { label: "welzaa.com", href: "https://welzaa.com" },
+  evifyRider: {
+    label: "Rider App",
+    href: "https://play.google.com/store/apps/details?id=com.evifyrider.android",
+  },
+  evifyTeamIos: {
+    label: "Team iOS",
+    href: "https://apps.apple.com/in/app/evify-team/id6748310845",
+  },
+  tourigenAndroid: {
+    label: "Android",
+    href: "https://play.google.com/store/apps/details?id=com.toureign",
+  },
+  tourigenIos: {
+    label: "iOS",
+    href: "https://apps.apple.com/app/app-store/id6459451393",
+  },
+  pmAndroid: {
+    label: "Android",
+    href: "https://play.google.com/store/apps/details?id=com.PMPeople",
+  },
+  pmIos: {
+    label: "iOS",
+    href: "https://apps.apple.com/in/app/pmpeople/id1253865399",
+  },
+} as const;
+
+type CatalogProject = {
+  roles: Role[];
+  stack: string;
+  links?: { label: string; href: string }[];
+  en: { title: string; description: string };
+  de: { title: string; description: string };
+};
+
+const CATALOG: CatalogProject[] = [
   {
-    title: "Zappfresh Mobile Ecosystem",
-    stack: "React Native · Redux · REST · Geolocation · Geofencing",
-    description:
-      "Customer, rider, sales, and partner apps for a fresh-commerce platform — orders, payments, GPS delivery, and retailer workflows.",
-    links: [
-      {
-        label: "Customer Android",
-        href: "https://play.google.com/store/apps/details?id=com.zappfresh.android.zappfresh",
-      },
-      {
-        label: "Customer iOS",
-        href: "https://apps.apple.com/in/app/zappfresh/id1330553696",
-      },
-    ],
+    roles: ["react-native", "full-stack", "ai-engineer", "devops"],
+    stack: "React Native · Redux · REST · Maps · Geofencing",
+    links: [LINKS.zappfreshCustomerAndroid, LINKS.zappfreshCustomerIos],
+    en: {
+      title: "Zappfresh",
+      description:
+        "Customer, rider, sales, and partner apps. Orders, cart, payments, push, and GPS delivery with geofencing on Android and iOS.",
+    },
+    de: {
+      title: "Zappfresh",
+      description:
+        "Kunden-, Rider-, Sales- und Partner-Apps. Bestellungen, Warenkorb, Payments, Push und GPS-Lieferung mit Geofencing auf Android und iOS.",
+    },
   },
   {
-    title: "Welzaa Mental Health Platform",
+    roles: ["react-native", "full-stack", "ai-engineer", "devops"],
     stack: "React Native · Next.js · Node.js · PostgreSQL · AWS",
-    description:
-      "End-to-end wellness product: mobile app, admin, counselor matching, scheduling, payments, and content operations.",
-    links: [{ label: "welzaa.com", href: "https://welzaa.com" }],
+    links: [LINKS.welzaa],
+    en: {
+      title: "Welzaa",
+      description:
+        "Mental wellness product: the mobile app, admin, counselor matching, scheduling, payments, and the content tools behind welzaa.com.",
+    },
+    de: {
+      title: "Welzaa",
+      description:
+        "Mental-Wellness-Produkt: Mobile App, Admin, Counselor-Matching, Termine, Payments und die Content-Tools hinter welzaa.com.",
+    },
   },
   {
-    title: "Evify Rider & Fleet Platform",
-    stack: "React Native · IoT · Bluetooth · GPS",
-    description:
-      "Rider and team apps with Bluetooth vehicle access, live GPS, attendance, salary flows, and role-based fleet ops.",
-    links: [
-      {
-        label: "Rider App",
-        href: "https://play.google.com/store/apps/details?id=com.evifyrider.android",
-      },
-      {
-        label: "Team iOS",
-        href: "https://apps.apple.com/in/app/evify-team/id6748310845",
-      },
-    ],
+    roles: ["react-native", "full-stack", "ai-engineer", "devops"],
+    stack: "React Native · Bluetooth · GPS · IoT",
+    links: [LINKS.evifyRider, LINKS.evifyTeamIos],
+    en: {
+      title: "Evify",
+      description:
+        "Rider and team apps for delivery, attendance, and salary. Bluetooth for vehicle access, live GPS, and role-based fleet work.",
+    },
+    de: {
+      title: "Evify",
+      description:
+        "Rider- und Team-Apps für Lieferung, Anwesenheit und Gehalt. Bluetooth für Fahrzeugzugang, Live-GPS und rollenbasierte Flottenarbeit.",
+    },
   },
   {
-    title: "Tourigen Travel Experiences",
+    roles: ["react-native", "full-stack", "ai-engineer", "devops"],
     stack: "React Native · Redux Thunk · Axios",
-    description:
-      "Travel booking app with auth, journey planning, guest management, search, favorites, and booking flows on Android & iOS.",
-    links: [
-      {
-        label: "Android",
-        href: "https://play.google.com/store/apps/details?id=com.toureign",
-      },
-      {
-        label: "iOS",
-        href: "https://apps.apple.com/app/app-store/id6459451393",
-      },
-    ],
+    links: [LINKS.tourigenAndroid, LINKS.tourigenIos],
+    en: {
+      title: "Tourigen",
+      description:
+        "Travel booking on Android and iOS: sign-in, journey planning, guests, search, favorites, and the booking flow.",
+    },
+    de: {
+      title: "Tourigen",
+      description:
+        "Reisebuchung auf Android und iOS: Anmeldung, Reiseplanung, Gäste, Suche, Favoriten und der Buchungsablauf.",
+    },
   },
   {
-    title: "PMPeople Project Management",
+    roles: ["react-native", "full-stack", "ai-engineer", "devops"],
     stack: "React Native · Node.js · REST",
-    description:
-      "Enterprise mobile features for planning, collaboration, reporting, and task tracking across Android and iOS.",
-    links: [
-      {
-        label: "Android",
-        href: "https://play.google.com/store/apps/details?id=com.PMPeople",
-      },
-      {
-        label: "iOS",
-        href: "https://apps.apple.com/in/app/pmpeople/id1253865399",
-      },
-    ],
+    links: [LINKS.pmAndroid, LINKS.pmIos],
+    en: {
+      title: "PMPeople",
+      description:
+        "Project-management screens on Android and iOS: planning, tasks, team collaboration, and reporting, backed by REST APIs.",
+    },
+    de: {
+      title: "PMPeople",
+      description:
+        "Projektmanagement-Screens auf Android und iOS: Planung, Aufgaben, Teamzusammenarbeit und Reporting über REST-APIs.",
+    },
   },
   {
-    title: "Fliip Fitness Platform",
+    roles: ["react-native"],
     stack: "React Native · TypeScript · REST",
-    description:
-      "Fitness and activity product for workshops, yoga, games, and member engagement — features, APIs, and UX polish.",
+    en: {
+      title: "Fliip",
+      description:
+        "Fitness product for workshops, yoga, games, and member activity. Feature work, API hooks, and shared components on Android and iOS.",
+    },
+    de: {
+      title: "Fliip",
+      description:
+        "Fitness-Produkt für Workshops, Yoga, Spiele und Mitgliederaktivität. Features, API-Anbindung und gemeinsame Komponenten auf Android und iOS.",
+    },
   },
   {
-    title: "Heer CRM",
+    roles: ["react-native"],
     stack: "React Native · Axios · REST",
-    description:
-      "CRM workflows for customer management, automation, reporting, and operational tracking with reusable UI.",
+    en: {
+      title: "Heer CRM",
+      description:
+        "CRM screens for customers, follow-ups, and reporting. REST calls through Axios and reusable UI for the daily workflow.",
+    },
+    de: {
+      title: "Heer CRM",
+      description:
+        "CRM-Screens für Kunden, Nachverfolgung und Reporting. REST-Aufrufe über Axios und wiederverwendbare UI für den Alltag.",
+    },
   },
   {
-    title: "Digital Society",
+    roles: ["react-native"],
     stack: "React Native · Node.js",
-    description:
-      "Society management for maintenance, complaints, events, and resident–admin communication.",
+    en: {
+      title: "Digital Society",
+      description:
+        "Society app for maintenance, complaints, events, and messages between residents and the admin.",
+    },
+    de: {
+      title: "Digital Society",
+      description:
+        "Hausverwaltungs-App für Wartung, Beschwerden, Events und Nachrichten zwischen Bewohnern und Verwaltung.",
+    },
+  },
+  {
+    roles: ["react-native"],
+    stack: "React Native · REST · Location",
+    en: {
+      title: "WashOff",
+      description:
+        "Car-service app for finding nearby providers, filtering, booking a slot, and contacting the center from the phone.",
+    },
+    de: {
+      title: "WashOff",
+      description:
+        "Autoservice-App zum Finden naher Anbieter, Filtern, Buchen eines Termins und Kontakt zum Service-Center.",
+    },
+  },
+  {
+    roles: ["react-native", "full-stack", "devops"],
+    stack: "React Native · Next.js · Node.js · MongoDB",
+    en: {
+      title: "Pulse CRM",
+      description:
+        "CRM for more than one organization: leads, contacts, pipelines, and team assignment, plus Android and iOS apps, IVR, WhatsApp, and email.",
+    },
+    de: {
+      title: "Pulse CRM",
+      description:
+        "CRM für mehrere Organisationen: Leads, Kontakte, Pipelines und Teamzuordnung, plus Android- und iOS-Apps, IVR, WhatsApp und E-Mail.",
+    },
+  },
+  {
+    roles: ["full-stack", "ai-engineer", "devops"],
+    stack: "MERN · RAG · Pinecone · Docker · AWS ECS",
+    en: {
+      title: "DocForUs",
+      description:
+        "Healthcare product whose main screen is a chatbot for medical-information questions. Chat sessions, document upload, retrieval from a Pinecone index, then Docker on AWS ECS.",
+    },
+    de: {
+      title: "DocForUs",
+      description:
+        "Gesundheitsprodukt, dessen Hauptscreen ein Chatbot für medizinische Fragen ist. Chat-Sitzungen, Dokument-Upload, Retrieval über einen Pinecone-Index, danach Docker auf AWS ECS.",
+    },
+  },
+  {
+    roles: ["full-stack", "devops"],
+    stack: "Next.js · Node.js · MongoDB · AWS",
+    en: {
+      title: "AUM Pharmacy",
+      description:
+        "Pharmacy shop with a large catalog, search, REST APIs, and the AWS deploy and CI around the store.",
+    },
+    de: {
+      title: "AUM Pharmacy",
+      description:
+        "Apotheken-Shop mit großem Katalog, Suche, REST-APIs und dem AWS-Deploy samt CI rund um den Shop.",
+    },
+  },
+  {
+    roles: ["ai-engineer"],
+    stack: "Next.js · Node.js · LLM · MongoDB",
+    en: {
+      title: "FoxCRM",
+      description:
+        "CRM with model-written next-step suggestions and status updates on leads the team is already working.",
+    },
+    de: {
+      title: "FoxCRM",
+      description:
+        "CRM mit Modell-Vorschlägen für den nächsten Schritt und Statusupdates zu Leads, an denen das Team gerade arbeitet.",
+    },
+  },
+  {
+    roles: ["ai-engineer"],
+    stack: "Next.js · Node.js · LLM · Google APIs · Zoom",
+    en: {
+      title: "FoxMeetings",
+      description:
+        "Turns a meeting transcript into notes and a follow-up email, and can open a lead from what was decided in the call.",
+    },
+    de: {
+      title: "FoxMeetings",
+      description:
+        "Macht aus einem Meeting-Transkript Notizen und eine Follow-up-Mail und kann aus dem Gespräch einen Lead anlegen.",
+    },
+  },
+  {
+    roles: ["ai-engineer"],
+    stack: "Computer vision · AWS Rekognition · Node.js · Python",
+    en: {
+      title: "FoxTracking",
+      description:
+        "Video analytics on AWS Rekognition, with the Node and Python services that store and serve the results.",
+    },
+    de: {
+      title: "FoxTracking",
+      description:
+        "Videoanalyse mit AWS Rekognition und den Node- und Python-Services, die Ergebnisse speichern und ausliefern.",
+    },
+  },
+  {
+    roles: ["ai-engineer"],
+    stack: "Python · FastAPI · AWS Bedrock · Docker · ECS",
+    en: {
+      title: "SustainAI",
+      description:
+        "Sustainability questions answered through FastAPI and Bedrock, packaged with Docker and released on ECS.",
+    },
+    de: {
+      title: "SustainAI",
+      description:
+        "Nachhaltigkeitsfragen über FastAPI und Bedrock, verpackt mit Docker und ausgeliefert auf ECS.",
+    },
+  },
+  {
+    roles: ["ai-engineer"],
+    stack: "Node.js · AWS Rekognition · Docker · MongoDB",
+    en: {
+      title: "AI Attendance",
+      description:
+        "Attendance from face checks with Rekognition, a Node API, MongoDB, and a Docker release.",
+    },
+    de: {
+      title: "AI Attendance",
+      description:
+        "Anwesenheit über Gesichtsprüfung mit Rekognition, einer Node-API, MongoDB und einem Docker-Release.",
+    },
+  },
+  {
+    roles: ["ai-engineer"],
+    stack: "Next.js · Node.js · AWS · Docker",
+    en: {
+      title: "AI Content",
+      description:
+        "Content desk on Next.js and Node, with AWS and Docker for the environments it runs in.",
+    },
+    de: {
+      title: "AI Content",
+      description:
+        "Content-Arbeitsplatz mit Next.js und Node, dazu AWS und Docker für die Umgebungen, in denen er läuft.",
+    },
+  },
+  {
+    roles: ["ai-engineer"],
+    stack: "Next.js · React · Node.js",
+    en: {
+      title: "FoxSites",
+      description:
+        "Site and shop builder: pages, catalog blocks, and AI help for the copy and layout the merchant edits.",
+    },
+    de: {
+      title: "FoxSites",
+      description:
+        "Website- und Shop-Baukasten: Seiten, Katalogblöcke und KI-Hilfe für Texte und Layout, die der Händler bearbeitet.",
+    },
   },
 ];
 
-export const PROJECTS_DE: Project[] = [
-  {
-    title: "Zappfresh Mobile Ecosystem",
-    stack: "React Native · Redux · REST · Geolocation · Geofencing",
-    description:
-      "Kunden-, Rider-, Sales- und Partner-Apps für Fresh Commerce — Bestellungen, Payments, GPS-Lieferung und Händlerprozesse.",
-    links: [
-      {
-        label: "Customer Android",
-        href: "https://play.google.com/store/apps/details?id=com.zappfresh.android.zappfresh",
-      },
-      {
-        label: "Customer iOS",
-        href: "https://apps.apple.com/in/app/zappfresh/id1330553696",
-      },
-    ],
-  },
-  {
-    title: "Welzaa Mental-Health-Plattform",
-    stack: "React Native · Next.js · Node.js · PostgreSQL · AWS",
-    description:
-      "End-to-End Wellness-Produkt: Mobile App, Admin, Counselor-Matching, Termine, Payments und Content-Betrieb.",
-    links: [{ label: "welzaa.com", href: "https://welzaa.com" }],
-  },
-  {
-    title: "Evify Rider- & Flottenplattform",
-    stack: "React Native · IoT · Bluetooth · GPS",
-    description:
-      "Rider- und Team-Apps mit Bluetooth-Fahrzeugzugang, Live-GPS, Anwesenheit, Gehalt und rollenbasierter Flottensteuerung.",
-    links: [
-      {
-        label: "Rider App",
-        href: "https://play.google.com/store/apps/details?id=com.evifyrider.android",
-      },
-      {
-        label: "Team iOS",
-        href: "https://apps.apple.com/in/app/evify-team/id6748310845",
-      },
-    ],
-  },
-  {
-    title: "Tourigen Travel Experiences",
-    stack: "React Native · Redux Thunk · Axios",
-    description:
-      "Reisebuchungs-App mit Auth, Reiseplanung, Gästeverwaltung, Suche, Favoriten und Buchungsflows auf Android & iOS.",
-    links: [
-      {
-        label: "Android",
-        href: "https://play.google.com/store/apps/details?id=com.toureign",
-      },
-      {
-        label: "iOS",
-        href: "https://apps.apple.com/app/app-store/id6459451393",
-      },
-    ],
-  },
-  {
-    title: "PMPeople Projektmanagement",
-    stack: "React Native · Node.js · REST",
-    description:
-      "Enterprise-Mobile-Features für Planung, Kollaboration, Reporting und Aufgaben über Android und iOS.",
-    links: [
-      {
-        label: "Android",
-        href: "https://play.google.com/store/apps/details?id=com.PMPeople",
-      },
-      {
-        label: "iOS",
-        href: "https://apps.apple.com/in/app/pmpeople/id1253865399",
-      },
-    ],
-  },
-  {
-    title: "Fliip Fitness-Plattform",
-    stack: "React Native · TypeScript · REST",
-    description:
-      "Fitness- und Aktivitätsprodukt für Workshops, Yoga, Spiele und Mitgliederbindung — Features, APIs und UX.",
-  },
-  {
-    title: "Heer CRM",
-    stack: "React Native · Axios · REST",
-    description:
-      "CRM-Workflows für Kundenmanagement, Automatisierung, Reporting und operative Nachverfolgung.",
-  },
-  {
-    title: "Digital Society",
-    stack: "React Native · Node.js",
-    description:
-      "Hausverwaltungsplattform für Wartung, Beschwerden, Events und Kommunikation zwischen Bewohnern und Verwaltung.",
-  },
-];
+function projectsFor(locale: Locale, role: Role): Project[] {
+  return CATALOG.filter((item) => item.roles.includes(role)).map((item) => ({
+    title: item[locale].title,
+    description: item[locale].description,
+    stack: item.stack,
+    links: item.links ? [...item.links] : undefined,
+  }));
+}
 
 const SKILLS_BY_ROLE: Record<Role, { en: SkillGroup[]; de: SkillGroup[] }> = {
   "full-stack": {
@@ -434,6 +577,8 @@ const SKILLS_BY_ROLE: Record<Role, { en: SkillGroup[]; de: SkillGroup[] }> = {
           "React Native CLI",
           "Expo",
           "TypeScript",
+          "Android",
+          "iOS",
           "React Navigation",
           "Hermes",
         ],
@@ -443,8 +588,8 @@ const SKILLS_BY_ROLE: Record<Role, { en: SkillGroup[]; de: SkillGroup[] }> = {
         items: ["Redux Toolkit", "Thunk", "Axios", "GraphQL", "REST"],
       },
       {
-        label: "Device Features",
-        items: ["Maps", "Geofencing", "Bluetooth", "Camera", "Push"],
+        label: "On the device",
+        items: ["Maps", "Geofencing", "Bluetooth", "Camera", "Push", "Payments"],
       },
       {
         label: "Delivery",
@@ -458,6 +603,8 @@ const SKILLS_BY_ROLE: Record<Role, { en: SkillGroup[]; de: SkillGroup[] }> = {
           "React Native CLI",
           "Expo",
           "TypeScript",
+          "Android",
+          "iOS",
           "React Navigation",
           "Hermes",
         ],
@@ -467,8 +614,8 @@ const SKILLS_BY_ROLE: Record<Role, { en: SkillGroup[]; de: SkillGroup[] }> = {
         items: ["Redux Toolkit", "Thunk", "Axios", "GraphQL", "REST"],
       },
       {
-        label: "Geräte-Features",
-        items: ["Maps", "Geofencing", "Bluetooth", "Kamera", "Push"],
+        label: "Am Gerät",
+        items: ["Maps", "Geofencing", "Bluetooth", "Kamera", "Push", "Payments"],
       },
       {
         label: "Delivery",
@@ -560,50 +707,50 @@ const HERO_BY_ROLE: Record<
 > = {
   "full-stack": {
     en: {
-      title: "I design and ship full-stack products that feel fast and reliable.",
+      title: "Web and mobile products, from the screen to the API.",
       subtitle:
-        "Senior engineer with 5+ years on MERN, Next.js, React Native, and AWS — from API design to polished mobile and web experiences.",
+        "Since 2021 I have built MERN and Next.js products and the React Native apps next to them — pharmacy commerce, CRM, health, and delivery. Day to day that is pages, REST and GraphQL, PostgreSQL or MongoDB, and an AWS release.",
     },
     de: {
-      title: "Ich entwerfe und liefere Full-Stack-Produkte, die schnell und zuverlässig wirken.",
+      title: "Web- und Mobile-Produkte, vom Screen bis zur API.",
       subtitle:
-        "Senior Engineerin mit über fünf Jahren Erfahrung in MERN, Next.js, React Native und AWS — vom API-Design bis zu klaren Web- und Mobile-Erlebnissen.",
+        "Seit 2021 baue ich MERN- und Next.js-Produkte und die React-Native-Apps daneben — Apotheke, CRM, Gesundheit und Delivery. Im Alltag sind das Seiten, REST und GraphQL, PostgreSQL oder MongoDB und ein AWS-Release.",
     },
   },
   "react-native": {
     en: {
-      title: "I build production React Native apps people actually use every day.",
+      title: "React Native apps for Android and iOS.",
       subtitle:
-        "5+ years shipping Android & iOS for delivery, fleet, health, travel, and enterprise — maps, geofencing, Bluetooth, and payments included.",
+        "Since 2021 I have been writing mobile apps that go to the Play Store and the App Store — delivery, fleet, health, travel, and internal tools. Day to day that means screens, navigation, Redux, APIs, and device work such as maps, geofencing, Bluetooth, camera, push, and payments.",
     },
     de: {
-      title: "Ich baue produktionsreife React-Native-Apps, die Menschen täglich nutzen.",
+      title: "React-Native-Apps für Android und iOS.",
       subtitle:
-        "Über fünf Jahre Android- & iOS-Apps für Delivery, Flotte, Health, Travel und Enterprise — inklusive Maps, Geofencing, Bluetooth und Payments.",
+        "Seit 2021 schreibe ich Mobile-Apps, die in den Play Store und den App Store gehen — Delivery, Flotte, Gesundheit, Reisen und interne Tools. Im Alltag sind das Screens, Navigation, Redux, APIs und Gerätearbeit wie Karten, Geofencing, Bluetooth, Kamera, Push und Payments.",
     },
   },
   "ai-engineer": {
     en: {
-      title: "I put intelligent workflows into real software products.",
+      title: "AI features inside products people already open.",
       subtitle:
-        "LLM features, RAG, agents, and vision flows — wired into MERN, Next.js, and React Native systems that run on AWS.",
+        "The work is chat, retrieval, and vision inside real apps — DocForUs for health questions, meeting notes, attendance, and content tools. Around the model there is still a session, a document store, an API, and a deploy.",
     },
     de: {
-      title: "Ich bringe intelligente Workflows in echte Softwareprodukte.",
+      title: "KI-Funktionen in Produkten, die Menschen schon öffnen.",
       subtitle:
-        "LLM-Features, RAG, Agents und Vision-Flows — integriert in MERN-, Next.js- und React-Native-Systeme auf AWS.",
+        "Die Arbeit ist Chat, Retrieval und Vision in echten Apps — DocForUs für Gesundheitsfragen, Meeting-Notizen, Anwesenheit und Content-Tools. Um das Modell herum bleiben Sitzung, Dokumentenspeicher, API und Deploy.",
     },
   },
   devops: {
     en: {
-      title: "I take products from commit to production with calm, repeatable pipelines.",
+      title: "From a commit to a release that stays up.",
       subtitle:
-        "CI/CD, Docker, Kubernetes, and AWS delivery for web and mobile stacks — with monitoring that keeps releases trustworthy.",
+        "I run the Docker, CI, and AWS side of the same web and mobile products — EC2, ECS, EKS, and Lambda — so a build can go out and be watched after it ships.",
     },
     de: {
-      title: "Ich bringe Produkte mit ruhigen, wiederholbaren Pipelines von Commit bis Produktion.",
+      title: "Vom Commit zu einem Release, das oben bleibt.",
       subtitle:
-        "CI/CD, Docker, Kubernetes und AWS-Delivery für Web- und Mobile-Stacks — mit Monitoring, dem Releases vertrauen können.",
+        "Ich mache die Docker-, CI- und AWS-Seite derselben Web- und Mobile-Produkte — EC2, ECS, EKS und Lambda — damit ein Build rausgeht und danach beobachtet werden kann.",
     },
   },
 };
@@ -611,43 +758,151 @@ const HERO_BY_ROLE: Record<
 const ABOUT_BY_ROLE: Record<Role, { en: string[]; de: string[] }> = {
   "full-stack": {
     en: [
-      "I'm Nensi — a senior software engineer who loves turning messy product ideas into clean, shippable systems.",
-      "I work across React, Next.js, Node.js, databases, and React Native, collaborating with designers and stakeholders to deliver dependable releases.",
+      "I'm Nensi Sakhiya, a software engineer in Ahmedabad. For a little over five years I have built products from the page through the API: Next.js and React in the browser, Node on the server, and React Native when the same product needs a phone.",
+      "A piece of work usually covers the screen, the API behind it, the database it writes, and the AWS release. That has been pharmacy commerce, CRM, counseling, and delivery.",
     ],
     de: [
-      "Ich bin Nensi — eine Senior Software Engineerin, die unscharfe Produktideen in klare, lieferbare Systeme verwandelt.",
-      "Ich arbeite über React, Next.js, Node.js, Datenbanken und React Native hinweg — gemeinsam mit Design und Stakeholdern für verlässliche Releases.",
+      "Ich bin Nensi Sakhiya, Softwareentwicklerin in Ahmedabad. Seit etwas mehr als fünf Jahren baue ich Produkte von der Seite bis zur API: Next.js und React im Browser, Node auf dem Server und React Native, wenn dasselbe Produkt eine App braucht.",
+      "Ein Auftrag umfasst meist den Screen, die API dahinter, die Datenbank und das AWS-Release. Dazu gehörten Apothekenhandel, CRM, Beratung und Delivery.",
     ],
   },
   "react-native": {
     en: [
-      "I'm Nensi — a mobile-focused engineer who ships cross-platform apps with care for performance, UX, and store-ready quality.",
-      "From rider GPS apps to wellness platforms, I own features end-to-end: navigation, state, native device APIs, and release polish.",
+      "I'm Nensi Sakhiya, a software engineer in Ahmedabad. Since 2021 I have shipped React Native apps for Android and iOS, from the first screen through a Play Store or App Store release.",
+      "Most of that work is React Native CLI, with Expo when it fits. A feature is the screen, its navigation and state, the API, and the phone itself: maps, geofencing, Bluetooth, camera, push, or payments. The apps have been rider and fleet products, wellness, travel booking, and tools used inside companies.",
     ],
     de: [
-      "Ich bin Nensi — eine mobile-fokussierte Engineerin, die Cross-Platform-Apps mit Fokus auf Performance, UX und Store-Qualität liefert.",
-      "Von Rider-GPS-Apps bis Wellness-Plattformen verantworte ich Features end-to-end: Navigation, State, native APIs und Release-Feinschliff.",
+      "Ich bin Nensi Sakhiya, Softwareentwicklerin in Ahmedabad. Seit 2021 liefere ich React-Native-Apps für Android und iOS, vom ersten Screen bis zum Release im Play Store oder App Store.",
+      "Der größte Teil läuft über die React Native CLI, Expo wenn es passt. Ein Feature ist der Screen, Navigation und State, die API und das Telefon selbst: Karten, Geofencing, Bluetooth, Kamera, Push oder Payments. Das waren Rider- und Flotten-Apps, Wellness, Reisebuchung und interne Tools.",
     ],
   },
   "ai-engineer": {
     en: [
-      "I'm Nensi — a builder who connects modern AI capabilities to practical product surfaces.",
-      "I combine LLM tooling with solid full-stack and mobile craft so intelligent features feel useful, not experimental.",
+      "I'm Nensi Sakhiya, a software engineer in Ahmedabad. I add AI where a product already has users, on the same MERN, Next.js, and React Native systems I build.",
+      "DocForUs is the clearest case: a health chatbot that answers from uploaded documents, with a session, a document store, an API, and a deploy. The same shape shows up in meeting notes, attendance, video checks, and content tools.",
     ],
     de: [
-      "Ich bin Nensi — eine Builderin, die moderne AI-Fähigkeiten an praktische Produktflächen anbindet.",
-      "Ich kombiniere LLM-Tooling mit solidem Full-Stack- und Mobile-Handwerk, damit intelligente Features nützlich wirken — nicht experimentell.",
+      "Ich bin Nensi Sakhiya, Softwareentwicklerin in Ahmedabad. KI baue ich dort ein, wo ein Produkt schon Nutzer hat — auf denselben MERN-, Next.js- und React-Native-Systemen.",
+      "DocForUs ist das klarste Beispiel: ein Gesundheits-Chatbot, der aus hochgeladenen Dokumenten antwortet, mit Sitzung, Dokumentenspeicher, API und Deploy. Dieselbe Form gibt es bei Meeting-Notizen, Anwesenheit, Videoprüfung und Content-Tools.",
     ],
   },
   devops: {
     en: [
-      "I'm Nensi — an engineer who cares as much about how software ships as how it looks.",
-      "I automate builds, containerize services, and stabilize cloud releases so teams can move fast without breaking trust.",
+      "I'm Nensi Sakhiya, a software engineer in Ahmedabad. Alongside the apps, I take those products to AWS and keep the release path clear after they ship.",
+      "That is Docker, GitHub Actions, and the EC2, ECS, EKS, and Lambda setup behind the health, commerce, CRM, and mobile backends I deliver.",
     ],
     de: [
-      "Ich bin Nensi — eine Engineerin, der die Auslieferung von Software genauso wichtig ist wie die Oberfläche.",
-      "Ich automatisiere Builds, containerisiere Services und stabilisiere Cloud-Releases, damit Teams schnell bleiben ohne Vertrauen zu verlieren.",
+      "Ich bin Nensi Sakhiya, Softwareentwicklerin in Ahmedabad. Neben den Apps bringe ich diese Produkte auf AWS und halte den Release-Weg danach übersichtlich.",
+      "Das sind Docker, GitHub Actions und das EC2-, ECS-, EKS- und Lambda-Setup hinter den Health-, Commerce-, CRM- und Mobile-Backends, die ich ausliefere.",
     ],
+  },
+};
+
+const ABOUT_TITLE: Record<Role, { en: string; de: string }> = {
+  "full-stack": {
+    en: "From the page to the API.",
+    de: "Von der Seite bis zur API.",
+  },
+  "react-native": {
+    en: "From the screen to the store.",
+    de: "Vom Screen bis in den Store.",
+  },
+  "ai-engineer": {
+    en: "AI inside products people already use.",
+    de: "KI in Produkten, die schon genutzt werden.",
+  },
+  devops: {
+    en: "A release that goes out and stays up.",
+    de: "Ein Release, das rausgeht und oben bleibt.",
+  },
+};
+
+const STATS: Record<Role, { en: { value: string; label: string }[]; de: { value: string; label: string }[] }> = {
+  "react-native": {
+    en: [
+      { value: "5+", label: "Years in React Native" },
+      { value: "Android · iOS", label: "Both platforms" },
+      { value: "Play · App Store", label: "Store builds" },
+    ],
+    de: [
+      { value: "5+", label: "Jahre mit React Native" },
+      { value: "Android · iOS", label: "Beide Plattformen" },
+      { value: "Play · App Store", label: "Store-Builds" },
+    ],
+  },
+  "full-stack": {
+    en: [
+      { value: "5+", label: "Years building" },
+      { value: "Web · Mobile", label: "Both sides" },
+      { value: "APIs · AWS", label: "Through release" },
+    ],
+    de: [
+      { value: "5+", label: "Jahre im Aufbau" },
+      { value: "Web · Mobile", label: "Beide Seiten" },
+      { value: "APIs · AWS", label: "Bis zum Release" },
+    ],
+  },
+  "ai-engineer": {
+    en: [
+      { value: "5+", label: "Years shipping" },
+      { value: "DocForUs", label: "Health chat" },
+      { value: "RAG · Vision", label: "In real products" },
+    ],
+    de: [
+      { value: "5+", label: "Jahre in Produktion" },
+      { value: "DocForUs", label: "Gesundheits-Chat" },
+      { value: "RAG · Vision", label: "In echten Produkten" },
+    ],
+  },
+  devops: {
+    en: [
+      { value: "5+", label: "Years shipping" },
+      { value: "Docker · CI", label: "Release path" },
+      { value: "AWS", label: "EC2 · ECS · Lambda" },
+    ],
+    de: [
+      { value: "5+", label: "Jahre in Produktion" },
+      { value: "Docker · CI", label: "Release-Weg" },
+      { value: "AWS", label: "EC2 · ECS · Lambda" },
+    ],
+  },
+};
+
+const SKILL_LEAD: Record<Role, { en: string; de: string }> = {
+  "react-native": {
+    en: "What I use day to day on Android and iOS apps.",
+    de: "Was ich täglich in Android- und iOS-Apps benutze.",
+  },
+  "full-stack": {
+    en: "What I use day to day across the web app, the API, and the phone.",
+    de: "Was ich täglich in der Web-App, der API und auf dem Telefon benutze.",
+  },
+  "ai-engineer": {
+    en: "What I actually wire into the product, plus the stack around it.",
+    de: "Was ich konkret ins Produkt einbaue, plus der Stack darum.",
+  },
+  devops: {
+    en: "What I use to get a build onto AWS and keep an eye on it.",
+    de: "Was ich nutze, um einen Build auf AWS zu bringen und ihn im Blick zu behalten.",
+  },
+};
+
+const PROJECT_LEAD: Record<Role, { en: string; de: string }> = {
+  "react-native": {
+    en: "Every mobile product from the résumé, including Zappfresh, Welzaa, Evify, and the rest.",
+    de: "Jedes Mobile-Produkt aus dem Lebenslauf, einschließlich Zappfresh, Welzaa, Evify und der übrigen.",
+  },
+  "full-stack": {
+    en: "Products from the résumé: DocForUs, AUM Pharmacy, Pulse, Zappfresh, and the platforms around them.",
+    de: "Produkte aus dem Lebenslauf: DocForUs, AUM Pharmacy, Pulse, Zappfresh und die Plattformen darum.",
+  },
+  "ai-engineer": {
+    en: "AI products from the résumé, starting with DocForUs, then the Fox tools and the mobile apps beside them.",
+    de: "KI-Produkte aus dem Lebenslauf, beginnend mit DocForUs, dann die Fox-Tools und die Mobile-Apps daneben.",
+  },
+  devops: {
+    en: "The same shipped products, from the DocForUs and pharmacy deploys through the mobile platforms.",
+    de: "Dieselben ausgelieferten Produkte, von den DocForUs- und Apotheken-Deploys bis zu den Mobile-Plattformen.",
   },
 };
 
@@ -656,7 +911,7 @@ export function getPortfolioContent(locale: Locale, role: Role) {
   const hero = HERO_BY_ROLE[role][locale];
   const aboutBody = ABOUT_BY_ROLE[role][locale];
   const skills = SKILLS_BY_ROLE[role][locale];
-  const projects = locale === "en" ? PROJECTS_EN : PROJECTS_DE;
+  const projects = projectsFor(locale, role);
   const experience =
     locale === "en" ? SHARED_EXPERIENCE_EN : SHARED_EXPERIENCE_DE;
 
@@ -676,35 +931,37 @@ export function getPortfolioContent(locale: Locale, role: Role) {
         title: hero.title,
         subtitle: hero.subtitle,
         ctaPrimary: "Projekte ansehen",
-        ctaSecondary: "Lebenslauf laden",
+        ctaSecondary: "Lebenslauf",
       },
+      stats: STATS[role].de,
       about: {
         heading: "Über mich",
+        title: ABOUT_TITLE[role].de,
         body: aboutBody,
       },
       skills: {
         heading: "Skills",
-        lead: "Ein klarer Überblick über die Werkzeuge, mit denen ich Produkte baue.",
+        lead: SKILL_LEAD[role].de,
         groups: skills,
       },
       projects: {
         heading: "Projekte",
-        lead: "Ausgewählte Produkte aus Delivery, Health, Travel und Enterprise.",
+        lead: PROJECT_LEAD[role].de,
         items: projects,
       },
       experience: {
         heading: "Erfahrung",
-        lead: "Vom Junior Mobile Engineer zur Senior Software Engineerin.",
+        lead: "Stellen seit 2020, in Ahmedabad und remote.",
         items: experience,
       },
       contact: {
         heading: "Kontakt",
-        lead: "Lass uns über dein nächstes Produkt sprechen.",
+        lead: "Schreib mir, wenn ein Produkt ansteht.",
         emailLabel: "E-Mail",
         linkedinLabel: "LinkedIn",
         phoneLabel: "Telefon",
       },
-      footer: `© 2026 ${PROFILE.name}. Gebaut mit Next.js & Framer Motion.`,
+      footer: `© 2026 ${PROFILE.name}`,
     };
   }
 
@@ -723,57 +980,41 @@ export function getPortfolioContent(locale: Locale, role: Role) {
       title: hero.title,
       subtitle: hero.subtitle,
       ctaPrimary: "View projects",
-      ctaSecondary: "Download resume",
+      ctaSecondary: "Resume",
     },
+    stats: STATS[role].en,
     about: {
       heading: "About",
+      title: ABOUT_TITLE[role].en,
       body: aboutBody,
     },
     skills: {
       heading: "Skills",
-      lead: "A focused toolkit for shipping reliable web and mobile products.",
+      lead: SKILL_LEAD[role].en,
       groups: skills,
     },
     projects: {
       heading: "Projects",
-      lead: "Selected work across delivery, health, travel, and enterprise.",
+      lead: PROJECT_LEAD[role].en,
       items: projects,
     },
     experience: {
       heading: "Experience",
-      lead: "From junior mobile engineer to senior software engineer.",
+      lead: "Roles since 2020, in Ahmedabad and remote.",
       items: experience,
     },
     contact: {
       heading: "Contact",
-      lead: "Let’s talk about your next product.",
+      lead: "Write if a product needs this kind of work.",
       emailLabel: "Email",
       linkedinLabel: "LinkedIn",
       phoneLabel: "Phone",
     },
-    footer: `© 2026 ${PROFILE.name}. Built with Next.js & Framer Motion.`,
+    footer: `© 2026 ${PROFILE.name}`,
   };
 }
 
-export const HUB_COPY = {
-  en: {
-    brand: "Nensi Sakhiya",
-    eyebrow: "Portfolio hub",
-    title: "One site. Four specialist paths.",
-    lead: "Choose a focus — Full Stack, React Native, AI, or DevOps — in English or German. Each path has its own résumé and story.",
-    chooseRole: "Choose a specialty",
-    chooseLang: "Language",
-    enter: "Open portfolio",
-    defaultNote: "Default language is English. German versions live under /de/…",
-  },
-  de: {
-    brand: "Nensi Sakhiya",
-    eyebrow: "Portfolio-Hub",
-    title: "Eine Website. Vier Spezialpfade.",
-    lead: "Wähle den Fokus — Full Stack, React Native, AI oder DevOps — auf Englisch oder Deutsch. Jeder Pfad hat eigenen Lebenslauf und Story.",
-    chooseRole: "Spezialisierung wählen",
-    chooseLang: "Sprache",
-    enter: "Portfolio öffnen",
-    defaultNote: "Standardsprache ist Englisch. Deutsche Versionen unter /de/…",
-  },
-};
+export function localePath(locale: Locale, role: Role) {
+  if (role === "react-native") return locale === "en" ? "/" : "/de";
+  return `/${locale}/${role}`;
+}

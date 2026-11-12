@@ -37,6 +37,11 @@ export type SkillGroup = {
   items: string[];
 };
 
+export type Stat = {
+  value: string;
+  label: string;
+};
+
 export type PortfolioCopy = {
   metaTitle: string;
   metaDescription: string;
@@ -54,8 +59,10 @@ export type PortfolioCopy = {
     ctaPrimary: string;
     ctaSecondary: string;
   };
+  stats: Stat[];
   about: {
     heading: string;
+    title: string;
     body: string[];
   };
   skills: {

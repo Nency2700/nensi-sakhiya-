@@ -1,12 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
-import { PROFILE, ROLE_META } from "@/lib/profile";
+import { localePath, PROFILE, ROLE_META } from "@/lib/profile";
 import type { Locale, PortfolioCopy, Role } from "@/lib/types";
-import { ROLES } from "@/lib/types";
 
 export function Navbar({
   locale,
@@ -36,69 +34,73 @@ export function Navbar({
     { href: "#contact", label: copy.nav.contact },
   ];
 
+  function stayHere() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setOpen(false);
+  }
+
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
         scrolled
-          ? "border-b border-[var(--line)] bg-[color-mix(in_oklab,var(--bg)_86%,white)] backdrop-blur-xl"
-          : "bg-transparent"
+          ? "border-[#eadfd3] bg-[#f7f2ea]/95 shadow-[0_10px_30px_-24px_rgba(27,20,18,0.45)] backdrop-blur-xl"
+          : "border-[#eadfd3]/70 bg-[#f7f2ea]/90 backdrop-blur-xl"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 md:px-8">
-        <Link href="/" className="leading-none">
-          <span className="font-[family-name:var(--font-display)] text-lg tracking-tight md:text-xl">
-            {PROFILE.name}
-          </span>
-          <span className="mt-1 block text-[10px] uppercase tracking-[0.22em] text-[var(--muted)]">
-            {ROLE_META[role].short[locale]}
-          </span>
-        </Link>
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:px-8">
+        <button
+          type="button"
+          onClick={stayHere}
+          className="font-[family-name:var(--font-display)] text-lg tracking-tight text-[#1b1412] md:text-xl"
+        >
+          {PROFILE.name}
+        </button>
 
         <nav className="hidden items-center gap-6 lg:flex">
-          {links.map((l) => (
+          {links.map((item) => (
             <a
-              key={l.href}
-              href={l.href}
-              className="group relative text-sm text-[var(--muted)] transition hover:text-[var(--ink)]"
+              key={item.href}
+              href={item.href}
+              className="group relative text-sm text-[#5c514c] transition hover:text-[#1b1412]"
             >
-              {l.label}
-              <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+              {item.label}
+              <span className="absolute -bottom-1 left-0 h-px w-0 bg-[#c45c3e] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden rounded-full border border-[var(--line)] bg-[var(--surface)] p-1 sm:flex">
-            {(["en", "de"] as Locale[]).map((l) => (
-              <Link
-                key={l}
-                href={`/${l}/${role}`}
-                className={`rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-wide transition ${
-                  locale === l
-                    ? "bg-[var(--ink)] text-[#fffaf6]"
-                    : "text-[var(--muted)] hover:text-[var(--ink)]"
-                }`}
-              >
-                {l}
-              </Link>
-            ))}
+          <div className="seg" role="group" aria-label="Language">
+            {(["en", "de"] as Locale[]).map((item) => {
+              const active = locale === item;
+              return (
+                <a
+                  key={item}
+                  href={localePath(item, role)}
+                  aria-current={active ? "page" : undefined}
+                  hrefLang={item}
+                >
+                  {item}
+                </a>
+              );
+            })}
           </div>
           <a
             href={resume}
             download
-            className="btn-ink hidden items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition md:inline-flex"
+            className="btn-ink inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-medium"
           >
             <Download size={15} />
-            {copy.nav.resume}
+            <span className="hidden sm:inline">{copy.nav.resume}</span>
           </a>
           <button
             type="button"
             aria-label="Menu"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] lg:hidden"
-            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#eadfd3] bg-[#fffdf9] text-[#1b1412] lg:hidden"
+            onClick={() => setOpen((value) => !value)}
           >
             {open ? <X size={16} /> : <Menu size={16} />}
           </button>
@@ -106,11 +108,11 @@ export function Navbar({
       </div>
 
       {open && (
-        <div className="border-t border-[var(--line)] bg-[var(--bg)] px-5 py-5 lg:hidden">
-          <div className="flex flex-col gap-3">
-            {links.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
-                {l.label}
+        <div className="border-t border-[#eadfd3] bg-[#f7f2ea] px-5 py-5 lg:hidden">
+          <div className="flex flex-col gap-3 text-[#1b1412]">
+            {links.map((item) => (
+              <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+                {item.label}
               </a>
             ))}
             <a
@@ -121,22 +123,6 @@ export function Navbar({
               <Download size={15} />
               {copy.nav.resume}
             </a>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {ROLES.map((r) => (
-                <Link
-                  key={r}
-                  href={`/${locale}/${r}`}
-                  onClick={() => setOpen(false)}
-                  className={`rounded-full px-3 py-1 text-xs ${
-                    r === role
-                      ? "bg-[var(--ink)] text-[#fffaf6]"
-                      : "border border-[var(--line)] text-[var(--muted)]"
-                  }`}
-                >
-                  {ROLE_META[r].short[locale]}
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
       )}

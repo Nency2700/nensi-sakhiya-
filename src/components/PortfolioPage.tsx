@@ -7,16 +7,7 @@ import type { Locale, Role } from "@/lib/types";
 import { CursorAura } from "./CursorAura";
 import { Navbar } from "./Navbar";
 import { Hero } from "./Hero";
-import {
-  About,
-  Contact,
-  Experience,
-  Footer,
-  Projects,
-  RoleStrip,
-  Skills,
-  Stats,
-} from "./Sections";
+import { About, Contact, Experience, Footer, Projects, Skills } from "./Sections";
 
 export function PortfolioPage({
   locale,
@@ -44,13 +35,11 @@ export function PortfolioPage({
       <Navbar locale={locale} role={role} copy={copy} />
       <main className="relative z-10">
         <Hero locale={locale} role={role} copy={copy} />
-        <Stats locale={locale} />
         <About locale={locale} copy={copy} />
         <Skills copy={copy} />
         <Projects copy={copy} />
         <Experience copy={copy} />
         <Contact locale={locale} role={role} copy={copy} />
-        <RoleStrip locale={locale} role={role} />
       </main>
       <Footer copy={copy} />
     </div>

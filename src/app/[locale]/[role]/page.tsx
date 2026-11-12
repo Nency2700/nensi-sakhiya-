@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PortfolioPage } from "@/components/PortfolioPage";
-import { getPortfolioContent, ROLE_META, SITE_URL } from "@/lib/profile";
+import { getPortfolioContent, localePath, ROLE_META, SITE_URL } from "@/lib/profile";
 import { isLocale, isRole, LOCALES, ROLES, type Locale, type Role } from "@/lib/types";
 
 type Params = { locale: string; role: string };
+
+export const instant = false;
 
 export function generateStaticParams() {
   return LOCALES.flatMap((locale) =>
@@ -24,7 +26,7 @@ export async function generateMetadata({
   const locale = localeParam as Locale;
   const role = roleParam as Role;
   const copy = getPortfolioContent(locale, role);
-  const path = `/${locale}/${role}`;
+  const path = localePath(locale, role);
   const title = ROLE_META[role].label[locale];
   const description =
     locale === "de"
@@ -60,9 +62,9 @@ export async function generateMetadata({
     alternates: {
       canonical: path,
       languages: {
-        en: `/en/${role}`,
-        de: `/de/${role}`,
-        "x-default": `/en/${role}`,
+        en: localePath("en", role),
+        de: localePath("de", role),
+        "x-default": localePath("en", role),
       },
     },
     openGraph: {

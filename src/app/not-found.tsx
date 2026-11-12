@@ -9,7 +9,7 @@ export default function NotFound() {
         href="/"
         className="rounded-full bg-[var(--ink)] px-5 py-2.5 text-sm text-[var(--bg)]"
       >
-        Back to hub
+        Back home
       </Link>
     </main>
   );
