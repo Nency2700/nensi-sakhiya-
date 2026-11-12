@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #eef2f1;
-  --surface: #e4ebe8;
-  --ink: #121816;
-  --body: #3a4440;
-  --muted: #66716c;
-  --line: #cfd8d3;
-  --accent: #1b5e4b;
+  --bg: #f7f2ea;
+  --surface: #fffdf9;
+  --ink: #1b1412;
+  --body: #4d433e;
+  --muted: #8a7b72;
+  --line: #eadfd3;
+  --accent: #c45c3e;
+  --accent-deep: #9a3f28;
+  --glow: rgba(196, 92, 62, 0.22);
   --font-display: var(--font-syne), "Syne", system-ui, sans-serif;
   --font-body: var(--font-sora), "Sora", system-ui, sans-serif;
 }
@@ -28,8 +30,8 @@ html {
 
 body {
   background:
-    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(27, 94, 75, 0.08), transparent 50%),
-    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(30, 77, 123, 0.06), transparent 45%),
+    radial-gradient(900px 420px at 0% -10%, rgba(196, 92, 62, 0.08), transparent 55%),
+    radial-gradient(700px 380px at 100% 0%, rgba(90, 70, 120, 0.06), transparent 50%),
     var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
@@ -37,7 +39,7 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--accent) 28%, white);
+  background: #f0d2c6;
   color: var(--ink);
 }
 
@@ -48,4 +50,49 @@ a {
 
 img {
   max-width: 100%;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-track.reverse {
+  animation-direction: reverse;
+  animation-duration: 38s;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.btn-ink {
+  background: var(--ink);
+  color: #fffaf6;
+  box-shadow: 0 14px 30px -18px rgba(27, 20, 18, 0.7);
+}
+
+.btn-ink:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: rgba(255, 253, 249, 0.72);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+
+.btn-ghost:hover {
+  border-color: var(--ink);
+  color: var(--accent-deep);
 }

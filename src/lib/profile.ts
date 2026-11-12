@@ -1,5 +1,7 @@
 import type { Experience, Locale, Project, Role, SkillGroup } from "./types";
 
+export const SITE_URL = "https://nensi-sakhiya.vercel.app";
+
 export const PROFILE = {
   name: "Nensi Sakhiya",
   email: "nensinsakhiya@gmail.com",
@@ -42,7 +44,7 @@ export const ROLE_META: Record<
       de: "Full-Stack-Entwicklerin",
     },
     short: { en: "Full Stack", de: "Full Stack" },
-    accent: "#1B5E4B",
+    accent: "#c45c3e",
     resumeFile: (locale) => `/resumes/${locale}-full-stack.pdf`,
   },
   "react-native": {
@@ -52,21 +54,21 @@ export const ROLE_META: Record<
       de: "React-Native-Entwicklerin",
     },
     short: { en: "React Native", de: "React Native" },
-    accent: "#1E4D7B",
+    accent: "#8d4a3c",
     resumeFile: (locale) => `/resumes/${locale}-react-native.pdf`,
   },
   "ai-engineer": {
     slug: "ai-engineer",
     label: { en: "AI Engineer", de: "AI-Engineerin" },
     short: { en: "AI Engineer", de: "AI Engineer" },
-    accent: "#6B3A2A",
+    accent: "#a33d4c",
     resumeFile: (locale) => `/resumes/${locale}-ai-engineer.pdf`,
   },
   devops: {
     slug: "devops",
     label: { en: "DevOps Engineer", de: "DevOps-Engineerin" },
     short: { en: "DevOps", de: "DevOps" },
-    accent: "#2F4A3C",
+    accent: "#7a5346",
     resumeFile: (locale) => `/resumes/${locale}-devops.pdf`,
   },
 };
